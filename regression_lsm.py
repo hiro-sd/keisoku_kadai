@@ -5,7 +5,7 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_squared_error
 
-# ---------- 0. データ読み込み ----------
+# データの読み込み
 df = pd.read_csv("/Users/yoshidahiroto/Downloads/修士関連/task.csv", parse_dates=["日付"])
 
 # データ準備（説明変数と目的変数）
@@ -34,39 +34,6 @@ lr_poly = LinearRegression()
 lr_poly.fit(X_poly, y)
 y_pred_poly = lr_poly.predict(X_poly)
 results["Polynomial (deg2)"] = {
-    "R2": r2_score(y, y_pred_poly),
-    "RMSE": np.sqrt(mean_squared_error(y, y_pred_poly))
-}
-
-# 3. 多項式回帰（3次）
-poly = PolynomialFeatures(degree=3, include_bias=False)
-X_poly = poly.fit_transform(X_std)
-lr_poly = LinearRegression()
-lr_poly.fit(X_poly, y)
-y_pred_poly = lr_poly.predict(X_poly)
-results["Polynomial (deg3)"] = {
-    "R2": r2_score(y, y_pred_poly),
-    "RMSE": np.sqrt(mean_squared_error(y, y_pred_poly))
-}
-
-# 4. 多項式回帰（4次）
-poly = PolynomialFeatures(degree=4, include_bias=False)
-X_poly = poly.fit_transform(X_std)
-lr_poly = LinearRegression()
-lr_poly.fit(X_poly, y)
-y_pred_poly = lr_poly.predict(X_poly)
-results["Polynomial (deg4)"] = {
-    "R2": r2_score(y, y_pred_poly),
-    "RMSE": np.sqrt(mean_squared_error(y, y_pred_poly))
-}
-
-# 5. 多項式回帰（5次）
-poly = PolynomialFeatures(degree=5, include_bias=False)
-X_poly = poly.fit_transform(X_std)
-lr_poly = LinearRegression()
-lr_poly.fit(X_poly, y)
-y_pred_poly = lr_poly.predict(X_poly)
-results["Polynomial (deg5)"] = {
     "R2": r2_score(y, y_pred_poly),
     "RMSE": np.sqrt(mean_squared_error(y, y_pred_poly))
 }
