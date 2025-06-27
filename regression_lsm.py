@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_squared_error
 
 # データの読み込み
-df = pd.read_csv("/Users/yoshidahiroto/Downloads/修士関連/task.csv", parse_dates=["日付"])
+df = pd.read_csv("task.csv", parse_dates=["日付"])
 
 # データ準備（説明変数と目的変数）
 X = df[["ジム", "最高気温", "降水量", "歩数"]].values
